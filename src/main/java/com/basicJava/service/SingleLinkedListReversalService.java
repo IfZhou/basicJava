@@ -50,6 +50,17 @@ public class SingleLinkedListReversalService implements  ICommonService {
 
         return res;
     }
+    private Node change(Node head){
+        if(head==null || head.getNext() ==null){
+            return head;
+        }
+        Node rehead = change(head.getNext());
+        head.getNext().setNext(head);
+        head.setNext(null);
+        return rehead;
+
+    }
+
 
     /**
      * 递归，在反转当前节点之前先反转后续节点

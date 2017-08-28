@@ -3,6 +3,8 @@ package com.basicJava.service;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
 import java.util.Enumeration;
 import java.util.Map;
 
@@ -14,8 +16,13 @@ import java.util.Map;
 public class JavaIOService implements  ICommonService {
     @Override
     public Map<String, Object> excuteTest() {
-        testInputAndOutputStream();
-        testReaderAndWriterStream();
+//        testInputAndOutputStream();
+//        testReaderAndWriterStream();
+        try {
+            testNioChannel();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 
@@ -69,6 +76,34 @@ public class JavaIOService implements  ICommonService {
 
 
     }
+
+    /**
+     * JavaNIO相关,Channel的简单示例
+     */
+    void testNioChannel() throws IOException {
+        RandomAccessFile aFile = new RandomAccessFile( this.getClass().getResource("/").getPath()+"/data/nio-data.txt", "rw");
+        FileChannel inChannel = aFile.getChannel();
+
+        ByteBuffer buf = ByteBuffer.allocate(48);
+
+        int bytesRead = inChannel.read(buf);
+        while (bytesRead != -1) {
+
+            System.out.println("Read " + bytesRead);
+            buf.flip();
+
+            while(buf.hasRemaining()){
+                System.out.print((char) buf.get());
+            }
+
+            buf.clear();
+            bytesRead = inChannel.read(buf);
+        }
+        aFile.close();
+    }
+
+
+
 
     public static void main(String[] args){
         ICommonService iCommonService = new JavaIOService();

@@ -1,5 +1,8 @@
 package com.basicJava.service;
 
+import com.basicJava.model.Airlines;
+import com.basicJava.model.DynFlight;
+import com.basicJava.model.sortClass;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -28,7 +31,7 @@ public class JavaFeatureService implements  ICommonService{
 //                                        {
 //                                            return name.toLowerCase();
 //                                        }).collect(Collectors.toList());
-
+        List<String> newList = names.stream().filter(name->name.equals("ZhiFuBao")).map(String::toString).collect(Collectors.toList());
         //与上述写法等价
         List<String> lowercaseNames = names.stream().map(String::toLowerCase).collect(Collectors.toList());
 
@@ -42,15 +45,34 @@ public class JavaFeatureService implements  ICommonService{
 
 
     public static void main(String[] args){
-//        ICommonService service = new   JavaFeatureService();
+        ICommonService service = new   JavaFeatureService();
 
-//        LinkedHashMap<String,String> linkedHashMap = new LinkedHashMap<>();
-//        LinkedHashSet<String> linkedHashSet =new LinkedHashSet<>();
-//        ArrayList<String> arrayList = new ArrayList<>();
-//        service.excuteTest();
-        JavaFeatureService  service = new   JavaFeatureService();
-        service.test(service.str);
+        LinkedHashMap<String,String> linkedHashMap = new LinkedHashMap<>();
+        LinkedHashSet<String> linkedHashSet =new LinkedHashSet<>();
+        ArrayList<String> arrayList = new ArrayList<>();
+        service.excuteTest();
+
+//        JavaFeatureService  service = new   JavaFeatureService();
+//        service.test(service.str);
+
+        /**
+         * 排序
+         */
+//        List<DynFlight> dynFlightList = new ArrayList<>();
+//        Date dt =new Date();
+//        dynFlightList.add(new DynFlight(new Airlines("CZ"),dt));
+//        dynFlightList.add(new DynFlight(new Airlines("CA"),dt));
+//        dynFlightList.add(new DynFlight(new Airlines("CA"),new Date(dt.getTime()+1000*60*60*24)));
+//        sortClass sortob =new sortClass();
+//        Collections.sort(dynFlightList,sortob);
+
+
+
+
     }
+
+
+
 
 
 }
