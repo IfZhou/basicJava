@@ -73,10 +73,4 @@ public class ConnectionPoolTest {
             end.countDown();
         }
     }
-
-
-
-
-
-
 }

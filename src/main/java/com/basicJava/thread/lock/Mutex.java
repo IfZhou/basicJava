@@ -15,6 +15,7 @@ import java.util.concurrent.locks.Lock;
  锁的自定义：实现锁接口->定义静态内部类继承同步器->重写模板方法->将Lock接口的方法代理到自己定义的同步器上
  */
 public class Mutex implements Lock {
+
     //静态内部类，自定义同步器
     private static  class Sync extends AbstractQueuedSynchronizer{
         //是否处于占用状态

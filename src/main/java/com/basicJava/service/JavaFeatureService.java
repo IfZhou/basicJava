@@ -52,6 +52,8 @@ public class JavaFeatureService implements  ICommonService{
         ArrayList<String> arrayList = new ArrayList<>();
         service.excuteTest();
 
+        Class class1 = JavaFeatureService.class;
+        Class class2  = service.getClass();
 //        JavaFeatureService  service = new   JavaFeatureService();
 //        service.test(service.str);
 
